@@ -3682,74 +3682,51 @@ function renderRecommendations() {
     /* =========================================================
        Mobile Sidebar
        ========================================================= */
-
-    function initMobileMenu() {
-
-        const menuBtn =
-            $("#menuBtn");
-
-        const sidebar =
-            $(".sidebar");
-
-        const overlay =
-            $("#sidebarOverlay");
-
+function initMobileMenu() {
+        const menuBtn = $("#menuBtn");
+        const sidebar = $(".sidebar");
+        const overlay = $("#sidebarOverlay");
 
         if (!menuBtn || !sidebar) {
             return;
         }
 
-
-        menuBtn.addEventListener(
-            "click",
-            () => {
-
-                sidebar.classList.toggle("open");
-
-                if (overlay) {
-                    overlay.classList.toggle("hidden");
-                }
-
+        function closeMobileMenu() {
+            // إزالة كلاس الفتح فقط، وسيتكفل ملف CSS بإخفائها نحو اليمين
+            sidebar.classList.remove("open");
+            
+            if (overlay) {
+                overlay.classList.add("hidden");
             }
-        );
-
-
-        if (overlay) {
-
-            overlay.addEventListener(
-                "click",
-                closeMobileMenu
-            );
-
+            document.body.style.overflow = "";
         }
 
+        function openMobileMenu() {
+            // إضافة كلاس الفتح
+            sidebar.classList.add("open");
 
-        $$(".nav-link").forEach(link => {
+            if (overlay) {
+                overlay.classList.remove("hidden");
+            }
+            document.body.style.overflow = "hidden";
+        }
 
-            link.addEventListener(
-                "click",
-                closeMobileMenu
-            );
-
+        menuBtn.addEventListener("click", () => {
+            if (sidebar.classList.contains("open")) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
 
+        if (overlay) {
+            overlay.addEventListener("click", closeMobileMenu);
+        }
 
-   
-
-function closeMobileMenu() {
-    sidebar.classList.remove("open");
-    sidebar.classList.add("-translate-x-full");
-
-    if (overlay) {
-        overlay.classList.add("hidden");
+        $$(".nav-link").forEach(link => {
+            link.addEventListener("click", closeMobileMenu);
+        });
     }
-
-    document.body.style.overflow = "";
-}
-
-
-    }
-
 
     /* =========================================================
        Active Navigation
