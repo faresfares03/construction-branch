@@ -3734,15 +3734,20 @@ function renderRecommendations() {
         });
 
 
-        function closeMobileMenu() {
+   
 
-            sidebar.classList.remove("open");
+function closeMobileMenu() {
+    sidebar.classList.remove("open");
+    sidebar.classList.add("-translate-x-full");
 
-            if (overlay) {
-                overlay.classList.add("hidden");
-            }
+    if (overlay) {
+        overlay.classList.add("hidden");
+    }
 
-        }
+    document.body.style.overflow = "";
+}
+
+
     }
 
 
