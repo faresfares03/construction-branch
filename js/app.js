@@ -223,13 +223,36 @@
     /* =========================================================
        Statistics
        ========================================================= */
+/* =========================================================
+       Statistics
+       ========================================================= */
 
     function renderStats() {
 
-        const total =
+        const totalProjects =
             Array.isArray(APP_DATA.projects)
                 ? APP_DATA.projects.length
                 : 0;
+
+        const totalMaintenance = getTotalMaintenanceCount();
+
+        // حساب عدد المشاريع المتوقفة من كلتا المصفوفتين (الأساسية والمستقلة)
+        const projects = Array.isArray(APP_DATA.projects) ? APP_DATA.projects : [];
+        const stoppedProjects = Array.isArray(APP_DATA.stoppedProjects) ? APP_DATA.stoppedProjects : [];
+        
+        const legacyPaused = projects.filter(p => p.status === "paused");
+        const independentStopped = stoppedProjects.filter(
+            stopped => !legacyPaused.some(p => p.name === stopped.name)
+        );
+        
+        // إجمالي المشاريع المتوقفة الفعلي
+        const totalPaused = legacyPaused.length + independentStopped.length;
+
+        // تحديث المجموع الكلي (مشاريع + صيانة + مشاريع متوقفة مستقلة) لضبط النسب المئوية
+        const totalAll = totalProjects + totalMaintenance + independentStopped.length;
+
+        // إجمالي الأعمال المنفذة
+        const totalCompleted = countByStatus("completed") + totalMaintenance;
 
         const statsGrid = $("#statsGrid");
 
@@ -237,8 +260,8 @@
 
             const stats = [
                 {
-                    value: countByStatus("completed"),
-                    label: "المشاريع المنجزة",
+                    value: totalCompleted,
+                    label: "الأعمال والمشاريع المنفذة",
                     icon: "✓"
                 },
                 {
@@ -252,7 +275,7 @@
                     icon: "⌕"
                 },
                 {
-                    value: countByStatus("paused"),
+                    value: totalPaused, // استخدام المتغير الجديد للمشاريع المتوقفة
                     label: "المشاريع المتوقفة",
                     icon: "Ⅱ"
                 }
@@ -286,8 +309,8 @@
 
             const bars = [
                 {
-                    label: "منجزة",
-                    value: countByStatus("completed"),
+                    label: "الأعمال المنفذة",
+                    value: totalCompleted,
                     color: ""
                 },
                 {
@@ -302,15 +325,15 @@
                 },
                 {
                     label: "متوقفة",
-                    value: countByStatus("paused"),
+                    value: totalPaused, // استخدام المتغير الجديد للمشاريع المتوقفة
                     color: "red"
                 }
             ];
 
             statusBars.innerHTML = bars.map(item => {
 
-                const percent = total
-                    ? Math.round((item.value / total) * 100)
+                const percent = totalAll
+                    ? Math.round((item.value / totalAll) * 100)
                     : 0;
 
                 return `
@@ -323,7 +346,7 @@
                             </span>
 
                             <span class="text-slate-500">
-                                ${item.value} من ${total}
+                                ${item.value} من ${totalAll}
                                 ·
                                 ${percent}%
                             </span>
@@ -372,8 +395,6 @@
             `).join("");
         }
     }
-
-
     /* =========================================================
        Project Image
        ========================================================= */
