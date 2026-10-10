@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002623">
+
+    <meta name="description"
+        content="منصة عرض أعمال ومشاريع فرع الإنشاءات - قيادة الأمن الداخلي بمحافظة حلب">
+
+    <title>عرض أعمال ومشاريع فرع الإنشاءات</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sy: {
+                            deep: "#002623",
+                            green: "#054239",
+                            sage: "#428177",
+                            gold: "#B9A779",
+                            ivory: "#EDEBE0",
+                            earth: "#988561",
+                            burgundy: "#6B1F2A"
+                        }
+                    },
+
+                    fontFamily: {
+                        arabic: [
+                            '"Tajawal"',
+                            "Arial",
+                            "sans-serif"
+                        ]
+                    },
+
+                    boxShadow: {
+                        soft: "0 20px 60px rgba(0, 38, 35, .12)"
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-sy-ivory text-sy-deep font-arabic">
+
+<div id="app">
+
+    <!-- Mobile Sidebar Overlay -->
+    <div
+        id="sidebarOverlay"
+        class="fixed inset-0 z-40 hidden bg-black/50 lg:hidden">
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside
+        id="sidebar"
+        class="sidebar fixed right-0 top-0 z-50 flex h-screen w-[290px] -translate-x-full flex-col border-l border-white/10 bg-sy-deep text-white transition-transform duration-300 lg:translate-x-0">
+
+        <!-- Logo / Institution -->
+        <div class="flex items-center gap-3 border-b border-white/10 px-6 py-5">
+
+            <div class="logo-mark">
+                <span>إ</span>
+            </div>
+
+            <div>
+                <div class="text-sm font-bold text-sy-gold">
+                    الجمهورية العربية السورية
+                </div>
+
+                <div class="mt-1 text-xs text-white/60">
+                    قيادة الأمن الداخلي بمحافظة حلب
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Branch Information -->
+        <div class="px-5 py-5">
+            <div class="rounded-2xl border border-sy-gold/20 bg-white/5 p-4">
+
+                <div class="text-xs text-white/50">
+                    الجهة
+                </div>
+
+                <div class="mt-1 font-bold">
+                    فرع الإنشاءات
+                </div>
+
+                <div class="mt-3 h-px bg-white/10"></div>
+
+                <div class="mt-3 text-xs leading-6 text-white/65">
+                    منصة عرض تنفيذية لمتابعة المشاريع
+                    والأعمال والتحديات والتوصيات.
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav
+            id="mainNav"
+            class="flex-1 space-y-1 overflow-y-auto px-4 pb-6">
+
+            <a
+                href="#home"
+                class="nav-link active"
+                data-section="home">
+                <span class="nav-icon">⌂</span>
+                الرئيسية
+            </a>
+
+            <a
+                href="#summary"
+                class="nav-link"
+                data-section="summary">
+                <span class="nav-icon">▦</span>
+                الملخص التنفيذي
+            </a>
+<a
+    href="#achievements"
+    class="nav-link"
+    data-section="achievements">
+    <span class="nav-icon">★</span>
+    إنجازات الفرع
+</a>
+            <a
+                href="#completed"
+                class="nav-link"
+                data-section="completed">
+                <span class="nav-icon">✓</span>
+                المشاريع المنجزة
+            </a>
+
+            <a
+                href="#ongoing"
+                class="nav-link"
+                data-section="ongoing">
+                <span class="nav-icon">↻</span>
+                قيد الإنجاز
+            </a>
+
+            <a
+                href="#studies"
+                class="nav-link"
+                data-section="studies">
+                <span class="nav-icon">⌕</span>
+                قيد إعداد الدراسة
+            </a>
+
+            <a
+                href="#review"
+                class="nav-link"
+                data-section="review">
+                <span class="nav-icon">◈</span>
+                قيد التدقيق
+            </a>
+
+            <a
+                href="#paused"
+                class="nav-link"
+                data-section="paused">
+                <span class="nav-icon">Ⅱ</span>
+                المشاريع المتوقفة
+            </a>
+
+            <a
+                href="#maintenance"
+                class="nav-link"
+                data-section="maintenance">
+                <span class="nav-icon">⚙</span>
+                أعمال الصيانة
+            </a>
+
+            <a
+                href="#challenges"
+                class="nav-link"
+                data-section="challenges">
+                <span class="nav-icon">!</span>
+                التحديات
+            </a>
+
+            <a
+                href="#needs"
+                class="nav-link"
+                data-section="needs">
+                <span class="nav-icon">＋</span>
+                الاحتياجات
+            </a>
+
+            <a
+                href="#recommendations"
+                class="nav-link"
+                data-section="recommendations">
+                <span class="nav-icon">◆</span>
+                التوصيات
+            </a>
+
+            <a
+                href="#roadmap"
+                class="nav-link"
+                data-section="roadmap">
+                <span class="nav-icon">→</span>
+                خطة العمل القادمة
+            </a>
+
+        </nav>
+
+        <!-- Open Standalone Presentation -->
+        <div class="border-t border-white/10 p-4">
+
+            <button
+                id="presentationBtn"
+                type="button"
+                class="gold-btn w-full"
+                onclick="window.location.href='presentation.html'">
+
+                <span>▶</span>
+                <span>بدء العرض التقديمي</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="lg:mr-[290px]">
+
+        <!-- TOP BAR -->
+        <header class="sticky top-0 z-30 border-b border-sy-deep/10 bg-sy-ivory/90 backdrop-blur">
+
+            <div class="mx-auto flex h-[72px] max-w-[1600px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
+
+                <!-- Mobile Menu -->
+                <div class="flex items-center gap-3">
+
+                    <button
+                        id="menuBtn"
+                        type="button"
+                        class="icon-btn lg:hidden"
+                        aria-label="فتح القائمة">
+                        ☰
+                    </button>
+
+                    <div>
+                        <div class="text-xs font-bold text-sy-sage">
+                            عرض أعمال ومشاريع الفرع
+                        </div>
+
+                        <div
+                            id="topDate"
+                            class="mt-1 text-xs text-slate-500">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-2">
+
+                    <button
+                        id="printBtn"
+                        type="button"
+                        class="secondary-btn hidden sm:flex">
+                        ⎙
+                        <span>طباعة</span>
+                    </button>
+
+                    <button
+                        id="fullscreenBtn"
+                        type="button"
+                        class="secondary-btn">
+                        ⛶
+                        <span class="hidden sm:inline">ملء الشاشة</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- HERO SECTION -->
+        <section
+            id="home"
+            class="hero-section relative overflow-hidden">
+
+            <div class="hero-grid"></div>
+            <div class="hero-orb hero-orb-one"></div>
+            <div class="hero-orb hero-orb-two"></div>
+
+            <div class="relative mx-auto max-w-[1600px] px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+
+                <div class="max-w-4xl">
+
+                    <!-- Badge -->
+                    <div class="mb-7 inline-flex items-center gap-3 rounded-full border border-sy-gold/30 bg-white/5 px-4 py-2 text-sm text-white/80">
+                        <span class="gold-dot"></span>
+                        <span>ملف إحاطة تنفيذي</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-7xl">
+                        أعمال ومشاريع
+                        <span class="block text-sy-gold">
+                            فرع الإنشاءات
+                        </span>
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="mt-6 max-w-2xl text-base leading-8 text-white/65 sm:text-lg">
+                        عرض تنفيذي يوضح واقع المشاريع،
+                        نسب الإنجاز، الأعمال قيد الدراسة،
+                        المشاريع قيد التدقيق، أعمال الصيانة،
+                        المشاريع المتوقفة، التحديات والاحتياجات،
+                        وصولًا إلى التوصيات وخطة العمل القادمة.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="mt-9 flex flex-wrap gap-3">
+
+                        <a href="#summary" class="gold-btn">
+                            استعراض الملخص
+                            <span>←</span>
+                        </a>
+
+                        <button
+                            id="heroPresentationBtn"
+                            type="button"
+                            class="outline-light-btn"
+                            onclick="window.location.href='presentation.html'">
+                            ▶ بدء العرض التقديمي
+                        </button>
+
+                    </div>
+
+                    <!-- Meta -->
+                    <div class="mt-12 flex flex-wrap gap-8 border-t border-white/10 pt-7">
+
+                        <div>
+                            <div class="text-xs text-white/40">
+                                الجهة
+                            </div>
+                            <div class="mt-1 font-bold text-white">
+                                قيادة الأمن الداخلي بمحافظة حلب
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-xs text-white/40">
+                                الفترة
+                            </div>
+                            <div id="periodLabel" class="mt-1 font-bold text-white">
+                                2026
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-xs text-white/40">
+                                آخر تحديث
+                            </div>
+                            <div id="updatedLabel" class="mt-1 font-bold text-white">
+                                —
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- EXECUTIVE SUMMARY -->
+        <section id="summary" class="section-shell">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">01 · الملخص التنفيذي</div>
+                    <h2>الصورة العامة في أرقام</h2>
+                </div>
+
+                <p>
+                    مؤشرات قابلة للتحديث تلقائيًا
+                    من بيانات المشاريع.
+                </p>
+
+            </div>
+
+            <div
+                id="statsGrid"
+                class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            </div>
+
+            <div class="mt-8 grid gap-6 xl:grid-cols-[1.35fr_.65fr]">
+
+                <!-- Status Chart -->
+                <div class="panel-card">
+
+                    <div class="mb-6 flex items-center justify-between">
+
+                        <div>
+                            <div class="text-xs font-bold text-sy-sage">
+                                حالة محفظة المشاريع
+                            </div>
+                            <h3 class="mt-1 text-xl font-extrabold">
+                                توزيع المشاريع حسب الحالة
+                            </h3>
+                        </div>
+
+                        <span class="status-chip neutral">
+                            محدث تلقائيًا
+                        </span>
+
+                    </div>
+
+                    <div id="statusBars" class="space-y-5"></div>
+
+                </div>
+
+                <!-- Executive Highlights -->
+                <div class="panel-card bg-sy-deep text-white">
+
+                    <div class="text-xs font-bold text-sy-gold">
+                        أبرز النتائج
+                    </div>
+
+                    <h3 class="mt-1 text-xl font-extrabold">
+                        ملخص تنفيذي
+                    </h3>
+
+                    <ul id="executiveHighlights" class="mt-6 space-y-4"></ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- COMPLETED PROJECTS -->
+        <section id="completed" class="section-shell bg-white/45">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">02 · المشاريع المنجزة</div>
+                    <h2>ما تم إنجازه</h2>
+                </div>
+
+                <span id="completedCount" class="count-badge">
+                    0 مشروع
+                </span>
+
+            </div>
+
+            <div
+                id="completedGrid"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            </div>
+
+        </section>
+
+        <!-- BRANCH ACHIEVEMENTS -->
+<section id="achievements" class="section-shell">
+
+    <div class="section-heading">
+        <div>
+            <div class="eyebrow">03 · إنجازات الفرع</div>
+            <h2>الإنجازات النوعية والمخرجات المحققة</h2>
+        </div>
+
+        <span id="achievementCount" class="count-badge">
+            0 إنجاز
+        </span>
+    </div>
+
+    <!-- إحصائيات الإنجازات -->
+    <div class="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+
+        <div class="panel-card">
+            <div class="text-sm text-slate-500">
+                إجمالي الإنجازات المسجلة
+            </div>
+            <div
+                id="achievementTotal"
+                class="mt-2 text-3xl font-extrabold text-sy-deep">
+                0
+            </div>
+        </div>
+
+        <div class="panel-card">
+            <div class="text-sm text-slate-500">
+                إنجازات مكتملة
+            </div>
+            <div
+                id="achievementCompleted"
+                class="mt-2 text-3xl font-extrabold text-sy-sage">
+                0
+            </div>
+        </div>
+
+        <div class="panel-card">
+            <div class="text-sm text-slate-500">
+                قيد الاستكمال أو التوثيق
+            </div>
+            <div
+                id="achievementPending"
+                class="mt-2 text-3xl font-extrabold text-sy-earth">
+                0
+            </div>
+        </div>
+
+    </div>
+
+    <!-- بطاقات الإنجازات -->
+    <div
+        id="achievementsGrid"
+        class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+
+        <div class="panel-card text-center text-slate-500">
+            جارٍ تحميل الإنجازات...
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- ONGOING PROJECTS -->
+        <section id="ongoing" class="section-shell">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">03 · المشاريع قيد الإنجاز</div>
+                    <h2>ما يجري تنفيذه</h2>
+                </div>
+
+                <span id="ongoingCount" class="count-badge">
+                    0 مشروع
+                </span>
+
+            </div>
+
+            <div
+                id="ongoingGrid"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            </div>
+
+        </section>
+
+        <!-- STUDIES -->
+        <section id="studies" class="section-shell bg-white/45">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">04 · قيد إعداد الدراسة</div>
+                    <h2>المشاريع والدراسات المستقبلية</h2>
+                </div>
+
+                <span id="studiesCount" class="count-badge">
+                    0 مشروع
+                </span>
+
+            </div>
+
+            <div id="studiesTable" class="panel-card overflow-hidden p-0"></div>
+
+        </section>
+
+        <!-- PROJECTS UNDER REVIEW -->
+        <section id="review" class="section-shell">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">05 · قيد التدقيق</div>
+                    <h2>المشاريع قيد التدقيق</h2>
+                </div>
+
+                <span id="reviewCount" class="count-badge">
+                    0 مشروع
+                </span>
+
+            </div>
+
+            <div class="mb-8 grid gap-5 md:grid-cols-2">
+
+                <!-- Internal Review -->
+                <div class="panel-card relative overflow-hidden">
+
+                    <div class="absolute right-0 top-0 h-full w-1 bg-sy-sage"></div>
+
+                    <div class="flex items-start gap-4">
+
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sy-sage/10 font-extrabold text-sy-sage">
+                            01
+                        </div>
+
+                        <div>
+                            <div class="text-xs font-bold text-sy-sage">
+                                مسار التدقيق
+                            </div>
+
+                            <h3 class="mt-1 text-xl font-extrabold">
+                                تدقيق داخلي
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-7 text-slate-500">
+                                المشاريع والملفات التي تخضع للمراجعة
+                                والتدقيق ضمن الفرع قبل استكمال الإجراءات اللازمة.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Central Review -->
+                <div class="panel-card relative overflow-hidden">
+
+                    <div class="absolute right-0 top-0 h-full w-1 bg-sy-gold"></div>
+
+                    <div class="flex items-start gap-4">
+
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sy-gold/10 font-extrabold text-sy-earth">
+                            02
+                        </div>
+
+                        <div>
+                            <div class="text-xs font-bold text-sy-earth">
+                                مسار التدقيق
+                            </div>
+
+                            <h3 class="mt-1 text-xl font-extrabold">
+                                تدقيق في الإدارة المركزية
+                            </h3>
+
+                            <p class="mt-3 text-sm leading-7 text-slate-500">
+                                المشاريع والملفات المحالة إلى الإدارة المركزية
+                                لاستكمال إجراءات التدقيق والمراجعة.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                id="reviewGrid"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            </div>
+
+        </section>
+
+        <!-- PAUSED PROJECTS -->
+        
+<!-- PAUSED PROJECTS -->
+<section id="paused" class="section-shell bg-white/45">
+
+    <div class="section-heading">
+        <div>
+            <div class="eyebrow">06 · المشاريع المتوقفة</div>
+            <h2>المشاريع التي تحتاج إلى معالجة</h2>
+            <p class="mt-2 text-sm text-slate-500">
+                متابعة أسباب التوقف والإجراءات المطلوبة لاستئناف التنفيذ.
+            </p>
+        </div>
+
+        <span id="pausedCount" class="count-badge burgundy">
+            0 مشروع
+        </span>
+    </div>
+
+    <!-- Executive Notice -->
+    <div class="mb-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-700">
+            <span class="text-xl font-bold">!</span>
+        </div>
+
+        <div>
+            <h3 class="font-bold text-red-900">
+                متابعة المعوقات والإجراءات التصحيحية
+            </h3>
+            <p class="mt-1 text-sm leading-7 text-red-800/80">
+                تُعرض المشاريع المتوقفة بصورة مستقلة لتوضيح أسباب التوقف،
+                والإجراءات المتخذة، والجهات المعنية بالمتابعة.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stopped Projects -->
+    <div id="pausedGrid" class="space-y-5">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center text-slate-500">
+            جارٍ تحميل بيانات المشاريع المتوقفة...
+        </div>
+    </div>
+
+</section>
+
+        <!-- MAINTENANCE -->
+        <section id="maintenance" class="section-shell">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">07 · أعمال الصيانة</div>
+                    <h2>أعمال الصيانة حسب القيمة</h2>
+                </div>
+
+                <span id="maintenanceCount" class="count-badge">
+                    0 عمل
+                </span>
+
+            </div>
+
+            <div class="grid gap-6 xl:grid-cols-2">
+
+                <!-- Maintenance List One -->
+                <div class="panel-card">
+
+                    <div class="mb-6 flex items-center justify-between">
+
+                        <div>
+                            <div class="text-xs font-bold text-sy-sage">
+                                الفئة الأولى
+                            </div>
+
+                            <h3 class="mt-1 text-xl font-extrabold">
+                                قائمة الصيانة الأولى
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                تُعرض القيم التقديرية المسجلة لكل بند.
+                            </p>
+                        </div>
+
+                        <span id="maintenanceSmallCount" class="count-badge">
+                            0
+                        </span>
+
+                    </div>
+
+                    <div id="maintenanceSmallGrid" class="space-y-4"></div>
+
+                </div>
+
+                <!-- Maintenance List Two -->
+                <div class="panel-card">
+
+                    <div class="mb-6 flex items-center justify-between">
+
+                        <div>
+                            <div class="text-xs font-bold text-sy-earth">
+                                الفئة الثانية
+                            </div>
+
+                            <h3 class="mt-1 text-xl font-extrabold">
+                                قائمة الصيانة الثانية
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                تُعرض القيم التقديرية المسجلة لكل بند.
+                            </p>
+                        </div>
+
+                        <span id="maintenanceMediumCount" class="count-badge">
+                            0
+                        </span>
+
+                    </div>
+
+                    <div id="maintenanceMediumGrid" class="space-y-4"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CHALLENGES -->
+        <section id="challenges" class="section-shell bg-white/45">
+
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">08 · التحديات</div>
+                    <h2>المعوقات وأثرها</h2>
+                </div>
+            </div>
+
+            <div
+                id="challengesGrid"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            </div>
+
+        </section>
+
+        <!-- NEEDS -->
+        <section id="needs" class="section-shell">
+
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">09 · الاحتياجات</div>
+                    <h2>ما يحتاجه الفرع</h2>
+                </div>
+            </div>
+
+            <div
+                id="needsGrid"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            </div>
+
+        </section>
+
+        <!-- RECOMMENDATIONS -->
+        <section id="recommendations" class="section-shell bg-sy-deep text-white">
+
+            <div class="section-heading light">
+                <div>
+                    <div class="eyebrow">10 · التوصيات</div>
+                    <h2>مقترحات قابلة للتنفيذ</h2>
+                </div>
+            </div>
+
+            <div
+                id="recommendationsGrid"
+                class="grid gap-4 md:grid-cols-2">
+            </div>
+
+        </section>
+
+        <!-- ROADMAP -->
+        <section id="roadmap" class="section-shell">
+
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">11 · خطة العمل القادمة</div>
+                    <h2>من الوضع الحالي إلى التنفيذ</h2>
+                </div>
+            </div>
+
+            <div id="roadmapGrid" class="relative"></div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-sy-deep/10 bg-sy-ivory px-4 py-10 text-center sm:px-6 lg:px-10">
+
+            <div class="mx-auto max-w-[1600px]">
+
+                <div class="text-sm font-bold text-sy-deep">
+                    فرع الإنشاءات · قيادة الأمن الداخلي بمحافظة حلب
+                </div>
+
+                <div class="mt-2 text-xs text-slate-500">
+                    منصة عرض تنفيذية — يتم تحديث البيانات من ملف data.js
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- PROJECT DETAILS MODAL -->
+<div
+    id="projectModal"
+    class="modal fixed inset-0 z-[100] hidden items-center justify-center bg-sy-deep/75 p-4 backdrop-blur-sm">
+
+    <div class="modal-panel max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-3xl bg-white shadow-2xl">
+        <div id="modalContent"></div>
+    </div>
+
+</div>
+
+<!-- DATA -->
+<script src="js/data.js"></script>
+
+<!-- MAIN WEBSITE APPLICATION -->
+<script src="js/app.js"></script>
+
+<!-- BRANCH ACHIEVEMENTS -->
+<script src="js/achievements.js"></script>
+</body>
+</html>

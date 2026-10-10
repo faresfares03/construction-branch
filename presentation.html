@@ -1,0 +1,611 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002623">
+    <meta name="description" content="العرض التنفيذي لأعمال ومشاريع فرع الإنشاءات">
+    <title>عرض أعمال ومشاريع فرع الإنشاءات</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/presentation.css">
+
+    <style>
+        /* تنسيقات شريحة إنجازات الفرع */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .achievement-card {
+            position: relative;
+            padding: 20px;
+            border: 1px solid rgba(5, 66, 57, 0.12);
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(0, 38, 35, 0.05);
+            overflow: hidden;
+            break-inside: avoid;
+        }
+
+        .achievement-card::before {
+            content: "";
+            position: absolute;
+            inset-block: 0;
+            inset-inline-start: 0;
+            width: 4px;
+            background: #428177;
+        }
+
+        .achievement-card.status-discussion::before {
+            background: #B9A779;
+        }
+
+        .achievement-card.status-processing::before {
+            background: #6B1F2A;
+        }
+
+        .achievement-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .achievement-category {
+            color: #6b756f;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .achievement-status {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .achievement-status.completed {
+            color: #176347;
+            background: #e7f5ed;
+        }
+
+        .achievement-status.discussion {
+            color: #775b17;
+            background: #f8f0d8;
+        }
+
+        .achievement-status.processing {
+            color: #7a2630;
+            background: #f8e9eb;
+        }
+
+        .achievement-card h3 {
+            margin: 0 0 10px;
+            color: #054239;
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .achievement-card p {
+            margin: 0 0 12px;
+            color: #515c57;
+            font-size: 0.92rem;
+            line-height: 1.9;
+        }
+
+        .achievement-result {
+            padding-top: 12px;
+            border-top: 1px solid #e8e9e2;
+        }
+
+        .achievement-result strong,
+        .achievement-notes strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #28685d;
+            font-size: 0.86rem;
+        }
+
+        .achievement-result span,
+        .achievement-notes span {
+            color: #37443e;
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+
+        .achievement-notes {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #f7f6f0;
+        }
+
+        .achievement-summary {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .achievement-summary-item {
+            padding: 13px;
+            text-align: center;
+            border-radius: 10px;
+            background: #f1f3ed;
+        }
+
+        .achievement-summary-item strong {
+            display: block;
+            color: #054239;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .achievement-summary-item span {
+            color: #58655e;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 760px) {
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-summary {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .achievement-card {
+                padding: 15px;
+            }
+        }
+
+        @media print {
+            .achievement-card {
+                box-shadow: none;
+                border: 1px solid #d9ded7;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="presentation-shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark">ف</span>
+                <div>
+                    <strong id="topBranchName">فرع الإنشاءات</strong>
+                    <small>العرض التنفيذي للأعمال والمشاريع</small>
+                </div>
+            </div>
+
+            <div class="top-actions">
+                <span class="period-label" id="presentationPeriod">2026</span>
+                <button class="icon-button" id="fullscreenBtn" title="ملء الشاشة" aria-label="ملء الشاشة">⛶</button>
+                <button class="icon-button" id="printBtn" title="طباعة العرض" aria-label="طباعة العرض">⎙</button>
+                <a class="icon-button home-button" href="index.html" title="العودة إلى الموقع" aria-label="العودة إلى الموقع">⌂</a>
+            </div>
+        </header>
+
+        <main id="presentation">
+
+            <section class="slide slide-cover active" data-title="الغلاف">
+                <div class="cover-pattern"></div>
+                <div class="cover-content">
+                    <span class="eyebrow">الجمهورية العربية السورية</span>
+                    <span class="eyebrow" id="coverCommand">قيادة الأمن الداخلي بمحافظة حلب</span>
+                    <div class="gold-line"></div>
+                    <p class="cover-kicker">عرض تنفيذي</p>
+                    <h1 id="coverTitle">أعمال ومشاريع<br>فرع الإنشاءات</h1>
+                    <p class="cover-description">عرض موجز للمشاريع المنجزة والجارية والدراسات والاحتياجات والتوصيات.</p>
+                    <div class="cover-meta">
+                        <span id="coverPeriod">العام 2026</span>
+                        <span class="meta-separator"></span>
+                        <span id="coverUpdated">تاريخ التحديث</span>
+                    </div>
+                </div>
+                <div class="cover-side-label">التخطيط • التنفيذ • المتابعة</div>
+            </section>
+
+            <section class="slide" data-title="المؤشرات العامة">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">01 / الملخص التنفيذي</span>
+                        <h2>المؤشرات العامة</h2>
+                        <p>قراءة سريعة لحجم الأعمال وحالة المشاريع المسجلة.</p>
+                    </div>
+                    <span class="section-number">01</span>
+                </div>
+                <div id="kpiCards" class="kpi-grid"></div>
+                <div class="content-grid two-columns">
+                    <article class="panel">
+                        <h3>توزيع المشاريع حسب الحالة</h3>
+                        <p class="panel-subtitle">عدد المشاريع في كل مرحلة</p>
+                        <div id="statusChart" class="bar-chart"></div>
+                    </article>
+                    <article class="panel summary-panel">
+                        <h3>أبرز المؤشرات</h3>
+                        <div id="executiveHighlights" class="highlight-list"></div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- شريحة الإنجازات الجديدة -->
+            <section class="slide" data-title="إنجازات الفرع">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">02 / الإنجازات النوعية</span>
+                        <h2>إنجازات الفرع</h2>
+                        <p>أبرز الأعمال التطويرية والإدارية والإجراءات المتخذة لتحسين كفاءة العمل.</p>
+                    </div>
+                    <span class="section-number">02</span>
+                </div>
+
+                <div id="achievementSummary" class="achievement-summary"></div>
+                <div id="achievementCards" class="achievement-grid"></div>
+            </section>
+
+            <section class="slide" data-title="المشاريع المنجزة">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">03 / النتائج المحققة</span>
+                        <h2>المشاريع المنجزة</h2>
+                        <p>الأعمال التي أُدرجت ضمن المشاريع المكتملة في قاعدة البيانات.</p>
+                    </div>
+                    <span class="section-number">03</span>
+                </div>
+                <div class="section-stat" id="completedSummary"></div>
+                <div id="completedProjects" class="project-grid"></div>
+            </section>
+
+            <section class="slide" data-title="المشاريع قيد التنفيذ والدراسة">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">04 / الأعمال الحالية</span>
+                        <h2>المشاريع قيد التنفيذ والدراسة</h2>
+                        <p>متابعة الأعمال الجارية والمشاريع التي لا تزال في مرحلة إعداد الدراسة.</p>
+                    </div>
+                    <span class="section-number">04</span>
+                </div>
+                <div class="content-grid two-columns">
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <h3>قيد التنفيذ</h3>
+                            <span class="count-badge" id="ongoingCount">0</span>
+                        </div>
+                        <div id="ongoingProjects" class="compact-list"></div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <h3>قيد إعداد الدراسة</h3>
+                            <span class="count-badge" id="studyCount">0</span>
+                        </div>
+                        <div id="studyProjects" class="compact-list"></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="slide" data-title="الدراسات قيد التدقيق">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">05 / التدقيق والاعتماد</span>
+                        <h2>الدراسات قيد التدقيق</h2>
+                        <p>توزيع الدراسات التي ما تزال قيد المراجعة لدى الجهات المعنية.</p>
+                    </div>
+                    <span class="section-number">05</span>
+                </div>
+                <div class="content-grid review-layout">
+                    <article class="panel">
+                        <h3>توزيع الدراسات</h3>
+                        <div id="reviewDonut" class="donut-wrap"></div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <h3>لدى الفرع / الإدارة الداخلية</h3>
+                            <span class="count-badge" id="internalReviewCount">0</span>
+                        </div>
+                        <div id="internalReviewList" class="compact-list"></div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <h3>لدى الإدارة المركزية</h3>
+                            <span class="count-badge" id="centralReviewCount">0</span>
+                        </div>
+                        <div id="centralReviewList" class="compact-list"></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="slide" data-title="المشاريع المتوقفة">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">06 / معوقات التنفيذ</span>
+                        <h2>المشاريع المتوقفة</h2>
+                        <p>المشاريع التي تحتاج إلى معالجة أسباب التوقف تمهيدًا لاستئنافها.</p>
+                    </div>
+                    <span class="section-number">06</span>
+                </div>
+                <div id="pausedProjects" class="project-grid"></div>
+            </section>
+
+            <section class="slide" data-title="أعمال الصيانة">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">07 / الأعمال الخدمية</span>
+                        <h2>أعمال الصيانة والتجهيز</h2>
+                        <p>الأعمال المصنفة بحسب الفئات المعتمدة في بيانات الفرع.</p>
+                    </div>
+                    <span class="section-number">07</span>
+                </div>
+                <div id="maintenanceKpis" class="kpi-grid maintenance-kpis"></div>
+                <div class="content-grid two-columns">
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <h3>أعمال ضمن فئة 1,000 دولار</h3>
+                            <span class="count-badge" id="maintenanceSmallCount">0</span>
+                        </div>
+                        <div id="maintenanceSmall" class="compact-list"></div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <h3>أعمال ضمن فئة 10,000 دولار</h3>
+                            <span class="count-badge" id="maintenanceLargeCount">0</span>
+                        </div>
+                        <div id="maintenanceLarge" class="compact-list"></div>
+                    </article>
+                </div>
+                <p class="footnote">الفئات المالية المعروضة هي تصنيفات للأعمال وليست تكاليف فعلية ما لم تكن القيمة موثقة في البيانات.</p>
+            </section>
+
+            <section class="slide" data-title="التحديات">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">08 / التحديات</span>
+                        <h2>التحديات والمعوقات</h2>
+                        <p>أبرز العوامل التي قد تؤثر في سير العمل ومواعيد الإنجاز.</p>
+                    </div>
+                    <span class="section-number">08</span>
+                </div>
+                <div id="challengesList" class="feature-list"></div>
+            </section>
+
+            <section class="slide" data-title="الاحتياجات">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">09 / متطلبات العمل</span>
+                        <h2>الاحتياجات والأولويات</h2>
+                        <p>المتطلبات المسجلة لدعم استمرارية التنفيذ ورفع كفاءة المتابعة.</p>
+                    </div>
+                    <span class="section-number">09</span>
+                </div>
+                <div id="needsList" class="feature-list"></div>
+            </section>
+
+            <section class="slide" data-title="التوصيات">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">10 / الإجراءات المقترحة</span>
+                        <h2>التوصيات</h2>
+                        <p>إجراءات مقترحة لتحسين الأداء وتسريع إنجاز الأعمال وفق الأصول المعتمدة.</p>
+                    </div>
+                    <span class="section-number">10</span>
+                </div>
+                <div id="recommendationsList" class="recommendation-grid"></div>
+            </section>
+
+            <section class="slide" data-title="خطة العمل القادمة">
+                <div class="slide-heading">
+                    <div>
+                        <span class="eyebrow">11 / المتابعة المستقبلية</span>
+                        <h2>خطة العمل القادمة</h2>
+                        <p>محاور المتابعة والخطوات التالية وفق البيانات المتاحة.</p>
+                    </div>
+                    <span class="section-number">11</span>
+                </div>
+                <div id="roadmapList" class="roadmap"></div>
+            </section>
+
+            <section class="slide slide-closing" data-title="الختام">
+                <div class="closing-content">
+                    <span class="eyebrow">فرع الإنشاءات</span>
+                    <div class="gold-line"></div>
+                    <h2>نحو تنفيذ أكثر كفاءة<br>ومتابعة أكثر فاعلية</h2>
+                    <p>عرض الأعمال والمشاريع والاحتياجات والتوصيات</p>
+                    <span id="closingPeriod" class="closing-period">2026</span>
+                </div>
+            </section>
+        </main>
+
+        <footer class="navigation">
+            <button id="prevBtn" class="nav-button" type="button">السابق ←</button>
+            <div class="slide-progress">
+                <div class="progress-track"><div id="progressFill"></div></div>
+                <div class="slide-counter">
+                    <span id="currentSlide">1</span> /
+                    <span id="totalSlides">13</span>
+                </div>
+            </div>
+            <button id="nextBtn" class="nav-button primary" type="button">التالي →</button>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/presentation.js"></script>
+
+    <script>
+        /*
+         * مصفوفة إنجازات الفرع:
+         * لإضافة إنجاز جديد، أضف عنصرًا جديدًا إلى هذه المصفوفة.
+         *
+         * الحالات المعتمدة:
+         * completed  = مكتمل
+         * discussion = قيد المناقشة
+         * processing = قيد المعالجة
+         */
+        const branchAchievements = [
+            {
+                id: 1,
+                title: "إعداد الهيكلية التنظيمية لفرع الإنشاءات",
+                category: "التطوير الإداري والتنظيمي",
+                department: "إدارة الفرع",
+                status: "completed",
+                description: "إعداد هيكلية تنظيمية لفرع الإنشاءات توضح التقسيمات الإدارية والفنية، وتحدد الاختصاصات والمسؤوليات وخطوط الإشراف والتنسيق بين الأقسام.",
+                outcome: "إعداد هيكلية تنظيمية محددة للاختصاصات والمسؤوليات، بما يدعم تنظيم العمل وتوضيح مرجعيات المتابعة والتنسيق داخل الفرع.",
+                notes: ""
+            },
+            {
+                id: 2,
+                title: "مناقشة وتوحيد أسس تدقيق الدراسات مع الإدارة المركزية",
+                category: "تطوير الإجراءات الفنية",
+                department: "قسم الدراسات",
+                status: "discussion",
+                description: "العمل على مناقشة أسس وإجراءات تدقيق الدراسات الهندسية مع الإدارة المركزية، بهدف الوصول إلى منهجية موحدة وواضحة للمراجعة الفنية.",
+                outcome: "الموضوع قيد المناقشة، ولم يتم اعتماد أسس نهائية حتى تاريخه.",
+                notes: "تُستكمل المناقشات بالتنسيق مع الإدارة المركزية تمهيدًا للتوافق على الأسس المقترحة واعتمادها أصولًا."
+            },
+            {
+                id: 3,
+                title: "تطوير آلية عمل قسم الدراسات",
+                category: "تطوير الأداء الفني",
+                department: "قسم الدراسات",
+                status: "completed",
+                description: "تطوير آلية العمل في قسم الدراسات من خلال تنظيم سير إعداد الدراسات ومراجعتها ومتابعتها، وتوضيح خطوات العمل والمسؤوليات المرتبطة بها.",
+                outcome: "تنظيم إجراءات العمل في القسم وتحسين وضوح مراحل إعداد الدراسات ومراجعتها ومتابعتها."
+            },
+            {
+                id: 4,
+                title: "تطوير آلية عمل قسم الإشراف والتنفيذ",
+                category: "تطوير الأداء التنفيذي",
+                department: "قسم الإشراف والتنفيذ",
+                status: "completed",
+                description: "تطوير آلية متابعة الأعمال الميدانية والإشراف على تنفيذ المشاريع، مع تعزيز تنظيم المهام والتنسيق بين الكوادر الفنية والجهات ذات الصلة.",
+                outcome: "تحسين تنظيم أعمال الإشراف والمتابعة التنفيذية وتوضيح مسؤوليات متابعة سير المشاريع."
+            },
+            {
+                id: 5,
+                title: "معالجة ملف مشروع مدرسة الشرطة المتوقف",
+                category: "معالجة الملفات العالقة",
+                department: "إدارة الفرع بالتنسيق مع الجهات المعنية",
+                status: "processing",
+                description: "متابعة ملف مشروع مدرسة الشرطة المتوقف، وحصر المعطيات المرتبطة به، وتشكيل اللجان اللازمة وإعداد التقارير لعرض واقع المشروع والإجراءات المطلوبة لمعالجة وضعه.",
+                outcome: "تشكيل اللجان المعنية، وإعداد التقارير اللازمة، ورفعها إلى الإدارة المركزية للنظر في الإجراءات المناسبة.",
+                notes: "المشروع متوقف منذ 25/10/2025، ولا يوجد عقد فعال قيد التنفيذ وفق البيانات المتاحة. ولا تُعد المعالجة نهائية إلى حين صدور القرار أو اعتماد الإجراء المناسب من الجهات المختصة."
+            },
+            {
+                id: 6,
+                title: "استحداث آلية للتدقيق الداخلي للدراسات الهندسية",
+                category: "الرقابة وضبط الجودة",
+                department: "قسم الدراسات",
+                status: "completed",
+                description: "استحداث آلية للتدقيق الداخلي للدراسات الهندسية قبل إحالتها إلى الجهات المعنية، بهدف مراجعة محتواها والتحقق من استيفائها للمتطلبات الفنية.",
+                outcome: "إدراج مرحلة للتدقيق الداخلي ضمن إجراءات العمل على الدراسات الهندسية، بما يعزز المراجعة الفنية ويرفع مستوى ضبط الجودة قبل الإحالة."
+            }
+        ];
+
+        (function renderBranchAchievements() {
+            const cardsContainer = document.getElementById("achievementCards");
+            const summaryContainer = document.getElementById("achievementSummary");
+
+            if (!cardsContainer || !summaryContainer) return;
+
+            const statusConfig = {
+                completed: {
+                    label: "مكتمل",
+                    className: "completed"
+                },
+                discussion: {
+                    label: "قيد المناقشة",
+                    className: "discussion"
+                },
+                processing: {
+                    label: "قيد المعالجة",
+                    className: "processing"
+                }
+            };
+
+            const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, char => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            })[char]);
+
+            const completedCount = branchAchievements.filter(item => item.status === "completed").length;
+            const discussionCount = branchAchievements.filter(item => item.status === "discussion").length;
+            const processingCount = branchAchievements.filter(item => item.status === "processing").length;
+
+            summaryContainer.innerHTML = `
+                <div class="achievement-summary-item">
+                    <strong>${completedCount}</strong>
+                    <span>إنجازات مكتملة</span>
+                </div>
+                <div class="achievement-summary-item">
+                    <strong>${discussionCount}</strong>
+                    <span>موضوعات قيد المناقشة</span>
+                </div>
+                <div class="achievement-summary-item">
+                    <strong>${processingCount}</strong>
+                    <span>ملفات قيد المعالجة</span>
+                </div>
+            `;
+
+            cardsContainer.innerHTML = branchAchievements.map(item => {
+                const status = statusConfig[item.status] || statusConfig.processing;
+                const statusClass = item.status === "completed"
+                    ? ""
+                    : item.status === "discussion"
+                        ? "status-discussion"
+                        : "status-processing";
+
+                return `
+                    <article class="achievement-card ${statusClass}">
+                        <div class="achievement-topline">
+                            <span class="achievement-category">${escapeHTML(item.category)}</span>
+                            <span class="achievement-status ${status.className}">
+                                ${status.label}
+                            </span>
+                        </div>
+
+                        <h3>${escapeHTML(item.title)}</h3>
+
+                        <p>${escapeHTML(item.description)}</p>
+
+                        <div class="achievement-result">
+                            <strong>النتيجة / المخرج</strong>
+                            <span>${escapeHTML(item.outcome)}</span>
+                        </div>
+
+                        ${item.department ? `
+                            <div class="achievement-notes">
+                                <strong>الجهة المعنية</strong>
+                                <span>${escapeHTML(item.department)}</span>
+                            </div>
+                        ` : ""}
+
+                        ${item.notes ? `
+                            <div class="achievement-notes">
+                                <strong>ملاحظات</strong>
+                                <span>${escapeHTML(item.notes)}</span>
+                            </div>
+                        ` : ""}
+                    </article>
+                `;
+            }).join("");
+        })();
+    </script>
+</body>
+</html>
