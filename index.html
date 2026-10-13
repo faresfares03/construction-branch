@@ -62,6 +62,9 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Print CSS -->
+    <link rel="stylesheet" href="css/print.css" media="print">
 </head>
 
 <body class="bg-sy-ivory text-sy-deep font-arabic">
@@ -172,13 +175,13 @@
                 قيد إعداد الدراسة
             </a>
 
-            <a
+            <!-- <a
                 href="#review"
                 class="nav-link"
                 data-section="review">
                 <span class="nav-icon">◈</span>
                 قيد التدقيق
-            </a>
+            </a> -->
 
             <a
                 href="#paused"
@@ -464,35 +467,14 @@
 
         </section>
 
-        <!-- COMPLETED PROJECTS -->
-        <section id="completed" class="section-shell bg-white/45">
 
-            <div class="section-heading">
-
-                <div>
-                    <div class="eyebrow">02 · المشاريع المنجزة</div>
-                    <h2>ما تم إنجازه</h2>
-                </div>
-
-                <span id="completedCount" class="count-badge">
-                    0 مشروع
-                </span>
-
-            </div>
-
-            <div
-                id="completedGrid"
-                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            </div>
-
-        </section>
 
         <!-- BRANCH ACHIEVEMENTS -->
 <section id="achievements" class="section-shell">
 
     <div class="section-heading">
         <div>
-            <div class="eyebrow">03 · إنجازات الفرع</div>
+            <div class="eyebrow">02 · إنجازات الفرع</div>
             <h2>الإنجازات النوعية والمخرجات المحققة</h2>
         </div>
 
@@ -552,6 +534,28 @@
 
 </section>
 
+ <!-- COMPLETED PROJECTS -->
+        <section id="completed" class="section-shell bg-white/45">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="eyebrow">03 · المشاريع المنجزة</div>
+                    <h2>ما تم إنجازه</h2>
+                </div>
+
+                <span id="completedCount" class="count-badge">
+                    0 مشروع
+                </span>
+
+            </div>
+
+            <div
+                id="completedGrid"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            </div>
+
+        </section>
 
         <!-- ONGOING PROJECTS -->
         <section id="ongoing" class="section-shell">
@@ -559,7 +563,7 @@
             <div class="section-heading">
 
                 <div>
-                    <div class="eyebrow">03 · المشاريع قيد الإنجاز</div>
+                    <div class="eyebrow">04 · المشاريع قيد الإنجاز</div>
                     <h2>ما يجري تنفيذه</h2>
                 </div>
 
@@ -582,7 +586,7 @@
             <div class="section-heading">
 
                 <div>
-                    <div class="eyebrow">04 · قيد إعداد الدراسة</div>
+                    <div class="eyebrow">05 · قيد إعداد الدراسة</div>
                     <h2>المشاريع والدراسات المستقبلية</h2>
                 </div>
 
@@ -597,92 +601,7 @@
         </section>
 
         <!-- PROJECTS UNDER REVIEW -->
-        <section id="review" class="section-shell">
-
-            <div class="section-heading">
-
-                <div>
-                    <div class="eyebrow">05 · قيد التدقيق</div>
-                    <h2>المشاريع قيد التدقيق</h2>
-                </div>
-
-                <span id="reviewCount" class="count-badge">
-                    0 مشروع
-                </span>
-
-            </div>
-
-            <div class="mb-8 grid gap-5 md:grid-cols-2">
-
-                <!-- Internal Review -->
-                <div class="panel-card relative overflow-hidden">
-
-                    <div class="absolute right-0 top-0 h-full w-1 bg-sy-sage"></div>
-
-                    <div class="flex items-start gap-4">
-
-                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sy-sage/10 font-extrabold text-sy-sage">
-                            01
-                        </div>
-
-                        <div>
-                            <div class="text-xs font-bold text-sy-sage">
-                                مسار التدقيق
-                            </div>
-
-                            <h3 class="mt-1 text-xl font-extrabold">
-                                تدقيق داخلي
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-7 text-slate-500">
-                                المشاريع والملفات التي تخضع للمراجعة
-                                والتدقيق ضمن الفرع قبل استكمال الإجراءات اللازمة.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Central Review -->
-                <div class="panel-card relative overflow-hidden">
-
-                    <div class="absolute right-0 top-0 h-full w-1 bg-sy-gold"></div>
-
-                    <div class="flex items-start gap-4">
-
-                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sy-gold/10 font-extrabold text-sy-earth">
-                            02
-                        </div>
-
-                        <div>
-                            <div class="text-xs font-bold text-sy-earth">
-                                مسار التدقيق
-                            </div>
-
-                            <h3 class="mt-1 text-xl font-extrabold">
-                                تدقيق في الإدارة المركزية
-                            </h3>
-
-                            <p class="mt-3 text-sm leading-7 text-slate-500">
-                                المشاريع والملفات المحالة إلى الإدارة المركزية
-                                لاستكمال إجراءات التدقيق والمراجعة.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div
-                id="reviewGrid"
-                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            </div>
-
-        </section>
-
+       
         <!-- PAUSED PROJECTS -->
         
 <!-- PAUSED PROJECTS -->

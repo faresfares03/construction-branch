@@ -171,9 +171,153 @@ const APP_DATA = {
             challenge: "",
             need: "",
             images: []
-        }
+        },
 
-        
+        // --- المشاريع المدمجة من واجهة التدقيق ---
+
+        {
+            id: 9,
+            name: "ملحق عقد لمشروع تأهيل فرع القضايا والملاحقات المسلكية",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع ملحق عقد لمشروع تأهيل فرع القضايا والملاحقات المسلكية، (تم الانتهاء من الدراسة والتدقيق الداخلي).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: []
+        },
+
+        {
+            id: 10,
+            name: "تأهيل رحبة الأشرفية",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "الأشرفية – حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع تأهيل رحبة الأشرفية، (تم الانتهاء من الدراسة والتدقيق الداخلي).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: []
+        },
+
+        {
+            id: 11,
+            name: "تأهيل مشفى الشرطة",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع تأهيل مشفى الشرطة، (تم الانتهاء من الدراسة والتدقيق الداخلي).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: []
+        },
+
+        {
+            id: 12,
+            name: "تأهيل فرع التسليح",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع تأهيل فرع التسليح، (دراسة مكتملة محالة للإدارة المركزية).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: ["assets/images.jpg"]
+        },
+
+        {
+            id: 13,
+            name: "تأهيل وترميم قسم شرطة باب الفرج وباب النصر",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "باب الفرج وباب النصر – حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع تأهيل وترميم قسم شرطة باب الفرج وباب النصر، (دراسة مكتملة محالة للإدارة المركزية).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: ["assets/images.jpg"]
+        },
+
+        {
+            id: 14,
+            name: "تأهيل وترميم قسم شرطة السكري",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "السكري – حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع تأهيل وترميم قسم شرطة السكري، (دراسة مكتملة محالة للإدارة المركزية).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: ["assets/images.jpg"]
+        },
+
+        {
+            id: 15,
+            name: "تأهيل مديرية أمن السفيرة",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "السفيرة – حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع تأهيل مديرية أمن السفيرة، (دراسة مكتملة محالة للإدارة المركزية).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: ["assets/images.jpg"]
+        },
+
+        {
+            id: 16,
+            name: "قسم شرطة الأنصاري",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "الأنصاري – حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع قسم شرطة الأنصاري، (دراسة مكتملة محالة للإدارة المركزية).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: ["assets/images.jpg"]
+        },
+
+        {
+            id: 17,
+            name: "وحدة فوج المراقبة CMU",
+            status: "study",
+            statusLabel: "دراسة مكتملة",
+            location: "حلب",
+            progress: 100,
+            stage: "دراسة مكتملة",
+            description: "مشروع وحدة فوج المراقبة CMU، (دراسة مكتملة محالة للإدارة المركزية).",
+            completedWork: [],
+            remainingWork: [],
+            challenge: "",
+            need: "",
+            images: ["assets/images.jpg"]
+        }
     ],
 
     /* =========================================================
@@ -268,7 +412,7 @@ const APP_DATA = {
             reasons: [],
             description:
                 "تنفيذ أعمال ترميم وإعادة تأهيل فرع القضايا والملاحقات المسلكية.",
-            images: []
+            images: ["../assets/logo/projects/405.jpg"]
         },
 
         {
@@ -284,7 +428,7 @@ const APP_DATA = {
             reasons: [],
             description:
                 "مشروع ترميم ثكنة هنانو – المرحلة الأولى، وهو قيد الإطلاق.",
-            images: []
+            images: ["../assets/logo/projects/406.jpg"]
         },
 
         {
@@ -326,128 +470,128 @@ const APP_DATA = {
        المشاريع قيد التدقيق
        ========================================================= */
 
-    review: {
-        internal: [
-            {
-                id: 101,
-                name: "ملحق عقد لمشروع تأهيل فرع القضايا والملاحقات المسلكية",
-                statusLabel: "تدقيق داخلي",
-                location: "حلب",
-                progress: 0,
-                stage: "التدقيق الداخلي",
-                description:
-                    "مشروع ملحق عقد لمشروع تأهيل فرع القضايا والملاحقات المسلكية، وهو قيد التدقيق الداخلي.",
-                need: "",
-                images: []
-            },
+    // review: {
+    //     internal: [
+    //         {
+    //             id: 101,
+    //             name: "ملحق عقد لمشروع تأهيل فرع القضايا والملاحقات المسلكية",
+    //             statusLabel: "تدقيق داخلي",
+    //             location: "حلب",
+    //             progress: 0,
+    //             stage: "التدقيق الداخلي",
+    //             description:
+    //                 "مشروع ملحق عقد لمشروع تأهيل فرع القضايا والملاحقات المسلكية، وهو قيد التدقيق الداخلي.",
+    //             need: "",
+    //             images: []
+    //         },
 
-            {
-                id: 102,
-                name: "تأهيل رحبة الأشرفية",
-                statusLabel: "تدقيق داخلي",
-                location: "الأشرفية – حلب",
-                progress: 0,
-                stage: "التدقيق الداخلي",
-                description:
-                    "مشروع تأهيل رحبة الأشرفية، وهو قيد التدقيق الداخلي.",
-                need: "",
-                images: []
-            },
+    //         {
+    //             id: 102,
+    //             name: "تأهيل رحبة الأشرفية",
+    //             statusLabel: "تدقيق داخلي",
+    //             location: "الأشرفية – حلب",
+    //             progress: 0,
+    //             stage: "التدقيق الداخلي",
+    //             description:
+    //                 "مشروع تأهيل رحبة الأشرفية، وهو قيد التدقيق الداخلي.",
+    //             need: "",
+    //             images: []
+    //         },
 
-            {
-                id: 103,
-                name: "تأهيل مشفى الشرطة",
-                statusLabel: "تدقيق داخلي",
-                location: "حلب",
-                progress: 0,
-                stage: "التدقيق الداخلي",
-                description:
-                    "مشروع تأهيل مشفى الشرطة، وهو قيد التدقيق الداخلي.",
-                need: "",
-                images: []
-            }
-        ],
+    //         {
+    //             id: 103,
+    //             name: "تأهيل مشفى الشرطة",
+    //             statusLabel: "تدقيق داخلي",
+    //             location: "حلب",
+    //             progress: 0,
+    //             stage: "التدقيق الداخلي",
+    //             description:
+    //                 "مشروع تأهيل مشفى الشرطة، وهو قيد التدقيق الداخلي.",
+    //             need: "",
+    //             images: []
+    //         }
+    //     ],
 
-        central: [
-            {
-                id: 201,
-                name: "تأهيل فرع التسليح",
-                statusLabel: "تدقيق في الإدارة المركزية",
-                location: "حلب",
-                progress: 0,
-                stage: "تدقيق في الإدارة المركزية",
-                description:
-                    "مشروع تأهيل فرع التسليح، وهو قيد التدقيق في الإدارة المركزية.",
-                need: "",
-                images: ["assets/images.jpg"]
-            },
+    //     central: [
+    //         {
+    //             id: 201,
+    //             name: "تأهيل فرع التسليح",
+    //             statusLabel: "تدقيق في الإدارة المركزية",
+    //             location: "حلب",
+    //             progress: 0,
+    //             stage: "تدقيق في الإدارة المركزية",
+    //             description:
+    //                 "مشروع تأهيل فرع التسليح، وهو قيد التدقيق في الإدارة المركزية.",
+    //             need: "",
+    //             images: ["assets/images.jpg"]
+    //         },
 
-            {
-                id: 202,
-                name: "تأهيل وترميم قسم شرطة باب الفرج وباب النصر",
-                statusLabel: "تدقيق في الإدارة المركزية",
-                location: "باب الفرج وباب النصر – حلب",
-                progress: 0,
-                stage: "تدقيق في الإدارة المركزية",
-                description:
-                    "مشروع تأهيل وترميم قسم شرطة باب الفرج وباب النصر، وهو قيد التدقيق في الإدارة المركزية.",
-                need: "",
-                images: ["assets/images.jpg"]
-            },
+    //         {
+    //             id: 202,
+    //             name: "تأهيل وترميم قسم شرطة باب الفرج وباب النصر",
+    //             statusLabel: "تدقيق في الإدارة المركزية",
+    //             location: "باب الفرج وباب النصر – حلب",
+    //             progress: 0,
+    //             stage: "تدقيق في الإدارة المركزية",
+    //             description:
+    //                 "مشروع تأهيل وترميم قسم شرطة باب الفرج وباب النصر، وهو قيد التدقيق في الإدارة المركزية.",
+    //             need: "",
+    //             images: ["assets/images.jpg"]
+    //         },
 
-            {
-                id: 203,
-                name: "تأهيل وترميم قسم شرطة السكري",
-                statusLabel: "تدقيق في الإدارة المركزية",
-                location: "السكري – حلب",
-                progress: 0,
-                stage: "تدقيق في الإدارة المركزية",
-                description:
-                    "مشروع تأهيل وترميم قسم شرطة السكري، وهو قيد التدقيق في الإدارة المركزية.",
-                need: "",
-                images: ["assets/images.jpg"]
-            },
+    //         {
+    //             id: 203,
+    //             name: "تأهيل وترميم قسم شرطة السكري",
+    //             statusLabel: "تدقيق في الإدارة المركزية",
+    //             location: "السكري – حلب",
+    //             progress: 0,
+    //             stage: "تدقيق في الإدارة المركزية",
+    //             description:
+    //                 "مشروع تأهيل وترميم قسم شرطة السكري، وهو قيد التدقيق في الإدارة المركزية.",
+    //             need: "",
+    //             images: ["assets/images.jpg"]
+    //         },
 
-            {
-                id: 204,
-                name: "تأهيل مديرية أمن السفيرة",
-                statusLabel: "تدقيق في الإدارة المركزية",
-                location: "السفيرة – حلب",
-                progress: 0,
-                stage: "تدقيق في الإدارة المركزية",
-                description:
-                    "مشروع تأهيل مديرية أمن السفيرة، وهو قيد التدقيق في الإدارة المركزية.",
-                need: "",
-                images: ["assets/images.jpg"]
-            },
+    //         {
+    //             id: 204,
+    //             name: "تأهيل مديرية أمن السفيرة",
+    //             statusLabel: "تدقيق في الإدارة المركزية",
+    //             location: "السفيرة – حلب",
+    //             progress: 0,
+    //             stage: "تدقيق في الإدارة المركزية",
+    //             description:
+    //                 "مشروع تأهيل مديرية أمن السفيرة، وهو قيد التدقيق في الإدارة المركزية.",
+    //             need: "",
+    //             images: ["assets/images.jpg"]
+    //         },
 
-            {
-                id: 205,
-                name: "قسم شرطة الأنصاري",
-                statusLabel: "تدقيق في الإدارة المركزية",
-                location: "الأنصاري – حلب",
-                progress: 0,
-                stage: "تدقيق في الإدارة المركزية",
-                description:
-                    "مشروع قسم شرطة الأنصاري، وهو قيد التدقيق في الإدارة المركزية.",
-                need: "",
-                images: ["assets/images.jpg"]
-            },
+    //         {
+    //             id: 205,
+    //             name: "قسم شرطة الأنصاري",
+    //             statusLabel: "تدقيق في الإدارة المركزية",
+    //             location: "الأنصاري – حلب",
+    //             progress: 0,
+    //             stage: "تدقيق في الإدارة المركزية",
+    //             description:
+    //                 "مشروع قسم شرطة الأنصاري، وهو قيد التدقيق في الإدارة المركزية.",
+    //             need: "",
+    //             images: ["assets/images.jpg"]
+    //         },
 
-            {
-                id: 206,
-                name: "وحدة فوج المراقبة CMU",
-                statusLabel: "تدقيق في الإدارة المركزية",
-                location: "حلب",
-                progress: 0,
-                stage: "تدقيق في الإدارة المركزية",
-                description:
-                    "مشروع وحدة فوج المراقبة CMU، وهو قيد التدقيق في الإدارة المركزية.",
-                need: "",
-                images: ["assets/images.jpg"]
-            }
-        ]
-    },
+    //         {
+    //             id: 206,
+    //             name: "وحدة فوج المراقبة CMU",
+    //             statusLabel: "تدقيق في الإدارة المركزية",
+    //             location: "حلب",
+    //             progress: 0,
+    //             stage: "تدقيق في الإدارة المركزية",
+    //             description:
+    //                 "مشروع وحدة فوج المراقبة CMU، وهو قيد التدقيق في الإدارة المركزية.",
+    //             need: "",
+    //             images: ["assets/images.jpg"]
+    //         }
+    //     ]
+    // },
 
     /* =========================================================
        أعمال الصيانة

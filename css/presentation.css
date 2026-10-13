@@ -1151,8 +1151,8 @@ button {
     html,
     body {
         background: white !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
     .presentation-shell {
@@ -1162,6 +1162,7 @@ button {
         padding: 0;
     }
 
+    /* إخفاء عناصر واجهة المستخدم غير المخصصة للطباعة */
     .topbar,
     .navigation,
     .toast {
@@ -1169,11 +1170,12 @@ button {
     }
 
     #presentation {
-        overflow: visible;
+        overflow: visible !important;
         border-radius: 0;
         box-shadow: none;
     }
 
+    /* إعداد الشرائح */
     .slide,
     .slide.active,
     .slide-cover,
@@ -1184,13 +1186,13 @@ button {
         flex-direction: column;
         justify-content: center;
         width: 100%;
-        height: 100vh;
         min-height: 100vh;
+        height: auto !important; /* يسمح للشريحة بالتمدد لصفحة أخرى إذا زاد المحتوى */
         padding: 28px 36px;
-        overflow: hidden;
+        overflow: visible !important; /* يمنع اختفاء العناصر السفلية */
         break-after: page;
         page-break-after: always;
-        animation: none;
+        animation: none !important;
     }
 
     .slide-cover,
@@ -1206,11 +1208,13 @@ button {
         margin-bottom: 20px;
     }
 
+    /* حماية البطاقات من القطع بين صفحتين */
     .panel,
     .project-card,
     .feature-card,
     .recommendation-card {
-        break-inside: avoid;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
     }
 
     .kpi-card {

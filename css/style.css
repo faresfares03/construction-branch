@@ -2578,84 +2578,86 @@ a {
    22. PRINT
    ========================================================= */
 
+/* =========================================================
+   22. PRINT (Advanced Multi-Page Fix)
+   ========================================================= */
+
 @media print {
-
-    .sidebar,
-    header,
-    #presentationMode,
-    .gold-btn,
-    .outline-light-btn,
-    .secondary-btn,
-    .icon-btn,
-    .details-btn {
-
-        display:
-
-            none !important;
-
+    /* 1. تحرير الصفحة للسماح بالانقسام لعدد غير محدود من الصفحات */
+    html, body, #app, main {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+        position: static !important;
+        background: #ffffff !important;
     }
 
-
-    main {
-
-        margin-right:
-
-            0 !important;
-
+    /* 2. إخفاء القائمة الجانبية، الأزرار، والطبقات العائمة (مثل المربعات الرمادية) */
+    .sidebar, header, footer, #sidebarOverlay, #presentationMode, #projectModal, 
+    button, .gold-btn, .outline-light-btn, .secondary-btn, .icon-btn, .details-btn {
+        display: none !important;
     }
 
-
-    .hero-section {
-
-        min-height:
-
-            400px;
-
-        print-color-adjust:
-
-            exact;
-
-        -webkit-print-color-adjust:
-
-            exact;
-
+    /* 3. إلغاء نظام Grid الذي يسبب قطع البطاقات ويمنع تقسيم الصفحات */
+    .grid, [class*="grid-cols"] {
+        display: block !important;
     }
 
+    /* 4. حماية البطاقات من القطع بين صفحتين وإضافة مسافة بينها */
+    .project-card, .panel-card, .info-card, .recommendation-card, .stopped-project-card, .stat-card {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin-bottom: 24px !important; /* تعويض المسافة التي كان يصنعها الـ Grid */
+        display: block !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border: 1px solid #e5e7eb !important;
+    }
+
+    /* 5. ترتيب شبكة الإحصائيات العلوية لتناسب الورقة */
+    #statsGrid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+    #statsGrid .stat-card {
+        width: calc(50% - 10px) !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* 6. منع فصل العناوين عن محتواها */
+    h2, h3, .section-heading {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* 7. إعدادات ورقة الـ A4 والألوان */
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
     .section-shell {
-
-        page-break-inside:
-
-            avoid;
-
+        padding: 20px 0 !important;
+        page-break-inside: auto !important;
     }
 
-
-    .project-card,
-    .panel-card,
-    .info-card {
-
-        box-shadow:
-
-            none;
-
-        break-inside:
-
-            avoid;
-
+    /* إخفاء الزخارف لتوفير الحبر وتوضيح النصوص */
+    .hero-grid, .hero-orb {
+        display: none !important;
     }
-
-
-    .recommendation-card {
-
-        break-inside:
-
-            avoid;
-
+    
+    .hero-section {
+        min-height: auto !important;
+        padding: 2cm 1cm !important;
     }
-
 }
-
 
 /* =========================================================
    23. ACCESSIBILITY
